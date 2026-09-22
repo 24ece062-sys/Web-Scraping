@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f6fb;
+
+    color: #222;
+
+}
+
+
+/* HEADER */
+
+header {
+
+    background: #111827;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 8%;
+
+}
+
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    margin-left: 25px;
+
+}
+
+
+nav a:hover {
+
+    color: #fbbf24;
+
+}
+
+
+/* HERO */
+
+.hero {
+
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #1e3a8a
+    );
+
+    color: white;
+
+    padding: 100px 10%;
+
+    text-align: center;
+
+}
+
+
+.hero h1 {
+
+    font-size: 50px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.hero h1 span {
+
+    color: #fbbf24;
+
+}
+
+
+.hero p {
+
+    font-size: 18px;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    line-height: 1.6;
+
+}
+
+
+.hero button {
+
+    margin-top: 30px;
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    background: #fbbf24;
+
+    font-weight: bold;
+
+}
+
+
+.hero button:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+
+    padding: 70px 8%;
+
+    text-align: center;
+
+}
+
+
+.dashboard h2 {
+
+    font-size: 32px;
+
+}
+
+
+.subtitle {
+
+    margin-top: 10px;
+
+    color: #666;
+
+}
+
+
+/* CONTROLS */
+
+.controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: end;
+
+    gap: 15px;
+
+    margin: 35px 0;
+
+    flex-wrap: wrap;
+
+}
+
+
+.controls div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    text-align: left;
+
+}
+
+
+.controls label {
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+
+}
+
+
+.controls input {
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+}
+
+
+.controls button {
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+}
+
+
+.controls button:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+/* STATUS */
+
+.status {
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
+
+}
+
+
+.live-dot {
+
+    display: inline-block;
+
+    width: 10px;
+
+    height: 10px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+}
+
+
+/* TABLE */
+
+.table-container {
+
+    overflow-x: auto;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+th {
+
+    background: #111827;
+
+    color: white;
+
+    padding: 16px;
+
+}
+
+
+td {
+
+    padding: 15px;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+
+tr:hover {
+
+    background: #f3f4f6;
+
+}
+
+
+/* POSITIVE AND NEGATIVE */
+
+.positive {
+
+    color: green;
+
+    font-weight: bold;
+
+}
+
+
+.negative {
+
+    color: red;
+
+    font-weight: bold;
+
+}
+
+
+/* FEATURES */
+
+.features {
+
+    padding: 70px 8%;
+
+    background: #eaf0ff;
+
+    text-align: center;
+
+}
+
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+
+    margin-top: 40px;
+
+}
+
+
+.feature-card {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.feature-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+.feature-card h3 {
+
+    margin-bottom: 15px;
+
+}
+
+
+/* ABOUT */
+
+.about {
+
+    padding: 70px 15%;
+
+    text-align: center;
+
+}
+
+
+.about p {
+
+    margin-top: 20px;
+
+    line-height: 1.7;
+
+    color: #555;
+
+}
+
+
+/* FOOTER */
+
+footer {
+
+    background: #111827;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    nav a {
+
+        margin: 10px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 35px;
+
+    }
+
+}</style>
+<body>
+    
+    
+    <section>
+    <title>Cryptocurrency Price Tracker</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            ₿ CryptoTracker
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#features">Features</a>
+            
+        </nav>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Cryptocurrency
+                <span>Price Tracker</span>
+            </h1>
+
+            <p>
+                Track real-time cryptocurrency prices, market changes,
+                and market capitalization of the top cryptocurrencies.
+            </p>
+
+            <button id="refreshBtn">
+                🔄 Refresh Data
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard" id="dashboard">
+
+        <h2>📊 Live Cryptocurrency Dashboard</h2>
+
+        <p class="subtitle">
+            Real-time market information for the Top 10 Cryptocurrencies
+        </p>
+
+
+        <!-- FILTER SECTION -->
+
+        <div class="controls">
+
+            <div>
+
+                <label>Minimum Price ($)</label>
+
+                <input
+                    type="number"
+                    id="minPrice"
+                    placeholder="Example: 100"
+                >
+
+            </div>
+
+
+            <button id="filterBtn">
+                Filter Price
+            </button>
+
+
+            <button id="gainersBtn">
+                📈 Top Gainers
+            </button>
+
+
+            <button id="resetBtn">
+                Reset
+            </button>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="status">
+
+            <span class="live-dot"></span>
+
+            <span id="statusText">
+                Waiting for cryptocurrency data...
+            </span>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Rank</th>
+
+                        <th>Coin</th>
+
+                        <th>Price</th>
+
+                        <th>24h Change</th>
+
+                        <th>Market Cap</th>
+
+                        <th>Last Updated</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="cryptoTable">
+
+                    <!-- Cryptocurrency data appears here -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features" id="features">
+
+        <h2>FEATURES</h2>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <h3>💰 Live Price Scraping</h3>
+
+                <p>
+                    Collects real-time cryptocurrency prices
+                    and market information.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>🌐 Dynamic Page Handling</h3>
+
+                <p>
+                    Uses Selenium WebDriver to handle
+                    JavaScript-rendered cryptocurrency pages.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>🔟 Top 10 Coins</h3>
+
+                <p>
+                    Displays cryptocurrency name, price,
+                    24-hour change and market capitalization.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>📁 CSV Export</h3>
+
+                <p>
+                    Stores cryptocurrency information in
+                    structured CSV format.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>📈 Historical Logging</h3>
+
+                <p>
+                    Timestamped data enables cryptocurrency
+                    price trend tracking over time.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>🔎 Smart Filtering</h3>
+
+                <p>
+                    Filter cryptocurrencies by price
+                    or identify the top gainers.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2>About This Project</h2>
+
+        <p>
+
+            The Cryptocurrency Price Tracker is a Selenium-powered
+            Python application designed to dynamically collect
+            cryptocurrency market information from CoinMarketCap.
+
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Cryptocurrency Price Tracker |
+            Python • Selenium • CSV • Web Dashboard
+        </p>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html></section>
+<script>let cryptoData = [];
+
+
+/* LOAD DATA */
+
+async function loadCryptoData() {
+
+    try {
+
+        document.getElementById("statusText").innerText =
+            "Loading cryptocurrency data...";
+
+
+        const response = await fetch(
+            "http://127.0.0.1:5000/api/crypto"
+        );
+
+
+        cryptoData = await response.json();
+
+        displayData(cryptoData);
+
+
+        document.getElementById("statusText").innerText =
+            "Live data loaded successfully";
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        document.getElementById("statusText").innerText =
+            "Unable to connect to backend";
+
+    }
+
+}
+
+
+/* PARSE CSV */
+
+function parseCSV(csvText) {
+
+    const lines = csvText.trim().split("\n");
+
+
+    const headers = lines[0].split(",");
+
+
+    const data = [];
+
+
+    for (let i = 1; i < lines.length; i++) {
+
+        const values = lines[i].split(",");
+
+
+        if (values.length < headers.length) {
+
+            continue;
+
+        }
+
+
+        let coin = {};
+
+
+        headers.forEach((header, index) => {
+
+            coin[header.trim()] =
+                values[index]?.trim();
+
+        });
+
+
+        data.push(coin);
+
+    }
+
+
+    return data;
+
+}
+
+
+/* DISPLAY DATA */
+
+function displayData(data) {
+
+    const table =
+        document.getElementById("cryptoTable");
+
+
+    table.innerHTML = "";
+
+
+    data.slice(-10).forEach(coin => {
+
+        const change =
+            coin["24h Change"] || "";
+
+
+        let changeClass = "";
+
+
+        if (change.includes("-")) {
+
+            changeClass = "negative";
+
+        }
+
+        else {
+
+            changeClass = "positive";
+
+        }
+
+
+        const row = document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>${coin.Rank}</td>
+
+            <td><strong>${coin.Coin}</strong></td>
+
+            <td>${coin.Price}</td>
+
+            <td class="${changeClass}">
+                ${change}
+            </td>
+
+            <td>${coin["Market Cap"]}</td>
+
+            <td>${coin.Timestamp}</td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* FILTER BY PRICE */
+
+document.getElementById("filterBtn")
+.addEventListener("click", function() {
+
+    const minimumPrice =
+        parseFloat(
+            document.getElementById("minPrice").value
+        );
+
+
+    if (isNaN(minimumPrice)) {
+
+        alert("Please enter a valid price");
+
+        return;
+
+    }
+
+
+    const filtered = cryptoData.filter(coin => {
+
+        const price =
+            parseFloat(
+                coin.Price
+                    .replace("$", "")
+                    .replace(",", "")
+            );
+
+
+        return price >= minimumPrice;
+
+    });
+
+
+    displayData(filtered);
+
+});
+
+
+/* TOP GAINERS */
+
+document.getElementById("gainersBtn")
+.addEventListener("click", function() {
+
+    const sorted =
+        [...cryptoData].sort((a, b) => {
+
+            const changeA =
+                parseFloat(
+                    a["24h Change"]
+                        .replace("%", "")
+                );
+
+
+            const changeB =
+                parseFloat(
+                    b["24h Change"]
+                        .replace("%", "")
+                );
+
+
+            return changeB - changeA;
+
+        });
+
+
+    displayData(sorted);
+
+});
+
+
+/* RESET */
+
+document.getElementById("resetBtn")
+.addEventListener("click", function() {
+
+    document.getElementById("minPrice").value = "";
+
+    displayData(cryptoData);
+
+});
+
+
+/* REFRESH BUTTON */
+
+document.getElementById("refreshBtn")
+.addEventListener("click", loadCryptoData);
+
+
+
+/* LOAD DATA WHEN PAGE STARTS */
+
+loadCryptoData();
+
+</script>
+
+
+
+    
+</body>
+</html>

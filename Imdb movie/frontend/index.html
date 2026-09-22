@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #020109;
+}
+
+
+/* Header */
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: #e9eda0;
+    color: rgb(13, 20, 20);
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    margin-top: 8px;
+}
+
+
+/* Statistics */
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 25px;
+}
+
+.stat-card {
+    background: white;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.stat-card h2 {
+    font-size: 30px;
+}
+
+
+/* Controls */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px;
+    flex-wrap: wrap;
+}
+
+#searchInput {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+select,
+button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button {
+    background: #f7eeee;
+    color: rgb(40, 47, 110);
+}
+
+button:hover {
+    background: #e4ee89;
+}
+
+
+/* Movie container */
+
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 25px;
+}
+
+
+/* Movie card */
+
+.movie-card {
+    background: rgb(158, 229, 234);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.movie-card h3 {
+    margin-bottom: 15px;
+}
+
+.movie-card p {
+    margin: 7px 0;
+}
+
+.rating {
+    font-weight: bold;
+}</style>
+<body>
+    <section>
+    <title>IMDb Movie Rating Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🎬 IMDb Movie Rating Explorer</h1>
+        <p>Explore IMDb Top 250 Movies</p>
+    </header>
+
+
+    <!-- Statistics -->
+    <section class="stats">
+
+        <div class="stat-card">
+            <h2 id="totalMovies">0</h2>
+            <p>Total Movies</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="averageRating">0</h2>
+            <p>Average Rating</p>
+        </div>
+
+    </section>
+
+
+    <!-- Controls -->
+    <section class="controls">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search movie title..."
+        >
+
+        <select id="ratingFilter">
+
+            <option value="0">All Ratings</option>
+            <option value="9">9.0+</option>
+            <option value="8.5">8.5+</option>
+            <option value="8">8.0+</option>
+            <option value="7.5">7.5+</option>
+
+        </select>
+
+        <button onclick="showTopMovies()">
+            🏆 Top Rated
+        </button>
+
+        <button onclick="loadMovies()">
+            🔄 Reset
+        </button>
+
+    </section>
+
+
+    <!-- Movies -->
+    <main>
+
+        <div id="movieContainer" class="movie-container">
+            <p>Loading movies...</p>
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html></section>
+<script>const API_URL = "http://127.0.0.1:5000";
+
+let allMovies = [];
+
+
+// Load movies
+async function loadMovies() {
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/movies`
+        );
+
+        allMovies = await response.json();
+
+        displayMovies(allMovies);
+
+        updateStatistics(allMovies);
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("movieContainer").innerHTML =
+            "<p>❌ Cannot connect to Flask backend.</p>";
+    }
+}
+
+
+// Display movies
+function displayMovies(movies) {
+
+    const container =
+        document.getElementById("movieContainer");
+
+    container.innerHTML = "";
+
+    if (movies.length === 0) {
+
+        container.innerHTML =
+            "<p>No movies found.</p>";
+
+        return;
+    }
+
+
+    movies.forEach(movie => {
+
+        const card = document.createElement("div");
+
+        card.className = "movie-card";
+
+        card.innerHTML = `
+
+            <h3>
+                #${movie.Rank} ${movie.Title}
+            </h3>
+
+            <p>
+                📅 Year: ${movie.Year}
+            </p>
+
+            <p class="rating">
+                ⭐ Rating: ${movie.Rating}
+            </p>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+}
+
+
+// Search movie
+document
+    .getElementById("searchInput")
+    .addEventListener("input", function () {
+
+        const searchText =
+            this.value.toLowerCase();
+
+        const filteredMovies =
+            allMovies.filter(movie =>
+                movie.Title
+                    .toLowerCase()
+                    .includes(searchText)
+            );
+
+        displayMovies(filteredMovies);
+
+    });
+
+
+// Rating filter
+document
+    .getElementById("ratingFilter")
+    .addEventListener("change", function () {
+
+        const minimumRating =
+            parseFloat(this.value);
+
+        const filteredMovies =
+            allMovies.filter(movie =>
+                parseFloat(movie.Rating) >= minimumRating
+            );
+
+        displayMovies(filteredMovies);
+
+    });
+
+
+// Top rated movies
+function showTopMovies() {
+
+    const sortedMovies =
+        [...allMovies]
+        .sort(
+            (a, b) =>
+                parseFloat(b.Rating) -
+                parseFloat(a.Rating)
+        );
+
+    displayMovies(
+        sortedMovies.slice(0, 10)
+    );
+}
+
+
+// Statistics
+function updateStatistics(movies) {
+
+    document.getElementById("totalMovies")
+        .textContent = movies.length;
+
+    if (movies.length === 0) {
+
+        document.getElementById("averageRating")
+            .textContent = "0";
+
+        return;
+    }
+
+    const total =
+        movies.reduce(
+            (sum, movie) =>
+                sum + parseFloat(movie.Rating),
+            0
+        );
+
+    const average =
+        total / movies.length;
+
+    document.getElementById("averageRating")
+        .textContent =
+        average.toFixed(2);
+}
+
+
+// Start application
+loadMovies();</script>
+    
+</body>
+</html>
